@@ -1,6 +1,6 @@
 -- Create table
 CREATE TABLE employees (
-    id INT,
+    id INT PRIMARY KEY,
     name VARCHAR(50),
     department VARCHAR(50),
     salary INT
@@ -30,3 +30,13 @@ SELECT MAX(salary) AS highest_salary FROM employees;
 
 -- 5. Order employees by salary descending
 SELECT * FROM employees ORDER BY salary DESC;
+
+-- 6. Count employees in each department
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department;
+
+-- 7. Employees earning above average salary
+SELECT name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
